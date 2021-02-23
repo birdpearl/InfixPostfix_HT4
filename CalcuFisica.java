@@ -210,16 +210,94 @@ public class CalcuFisica implements Calcu {
 	}
 
 
-	@Override
-	public int operarArrayList(ArrayList<String> t) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int operarArrayList(StackList<String> t) 
+    {
+        String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
+        StackList<String> y = new StackList<>();
+        int s = t.count();
+        while(!t.isEmpty())
+        {
+            if(n.contains(t.peek()))
+            {
+                y.push(t.pop());
+            }
+            else
+            {
+                int a = Integer.parseInt(y.pop());
+                int b = Integer.parseInt(y.pop());
+                if ((t.peek()).equals("+"))
+                {
+                    int c = suma(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("-"))
+                {
+                    int c = resta(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("*"))
+                {
+                    int c = multiplicacion(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("/"))
+                {
+                    int c = division(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+            }
+        }
+        return Integer.parseInt(y.peek().toString());
+    }
 
+    @Override
+    public int operarVector(StackVector<String> t) {
+        String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
+        StackVector<String> y = new StackVector<>(t.count());
+        while(!t.isEmpty())
+        {
+            if(n.contains(t.peek()))
+            {
+                y.push(t.pop());
+            }
+            else
+            {
+                int a = Integer.parseInt(y.pop());
+                int b = Integer.parseInt(y.pop());
+                if ((t.peek()).equals("+"))
+                {
+                    int c = suma(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("-"))
+                {
+                    int c = resta(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("*"))
+                {
+                    int c = multiplicacion(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+                else if ((t.peek().toString()).equals("/"))
+                {
+                    int c = division(b, a);
+                    y.push(String.valueOf(c));
+                    t.pop();
+                }
+            }
+        }
+        return Integer.parseInt(y.peek().toString());
+    }
 
-	@Override
-	public int operarVector(String[] t) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
