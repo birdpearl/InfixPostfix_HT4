@@ -1,7 +1,6 @@
 /**
  * 
  */
-package algoritmos;
 
 /*******************************************************
 * Universidad del Valle de Guatemala
@@ -26,16 +25,16 @@ public class DriverInPos {
         vista v=new vista();
         Scanner scan = new Scanner(System.in);
         
-        //se crea el arreglo postfix que tendrá los elementos del txt
+        //se crea el arreglo postfix que tendrï¿½ los elementos del txt
         String[] postfix;
         boolean bandc=true;
         int opcion=0;
         
-        //aqui deberías poner al usuario a que ingrese el path del archivo y registrarlo y todo se guarda en el vector postfix
+        //aqui deberï¿½as poner al usuario a que ingrese el path del archivo y registrarlo y todo se guarda en el vector postfix
         //le puse 10 solo por ejemplo
         postfix=new String[10];
         
-        while (opcion != 5 && bandc==true) {//loop que genera el menú para el usuario
+        while (opcion != 5 && bandc==true) {//loop que genera el menï¿½ para el usuario
             try{
                 v.bienve();
                 opcion = scan.nextInt(); //se copia la respuesta del ususario en una variable
@@ -68,7 +67,7 @@ public class DriverInPos {
                 v.opSalir();//se cierra el programa
             }
             else{
-                v.noValid();//el programa se cierra si se ingresó una letra
+                v.noValid();//el programa se cierra si se ingresï¿½ una letra
             }
         }
 
