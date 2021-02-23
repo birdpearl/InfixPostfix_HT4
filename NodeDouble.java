@@ -17,4 +17,8 @@ public class NodeDouble<E> {
 		prev = null;
 		value = element;
 	}
+	
+	public E NValue() {
+		return value;
+	}
 }

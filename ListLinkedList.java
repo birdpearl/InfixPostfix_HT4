@@ -57,5 +57,13 @@ public class ListLinkedList<E> extends List<E> {
 	public boolean isEmpty() {
 		return core.isEmpty();
 	}
+	
+	public E getStart() {
+		return core.getFirst();
+	}
+	
+	public E getEnd() {
+		return core.getLast();
+	}
 
 }

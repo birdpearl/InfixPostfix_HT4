@@ -4,6 +4,7 @@
 package algoritmos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author anard
@@ -117,16 +118,96 @@ public class CalcuFisica implements Calcu {
 
 
 	@Override
-	public int operarDoubleList(ListDoubleLinkedList<String> t) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int operarDoubleList(ListDoubleLinkedList<String> x) {
+		String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
+        ListDoubleLinkedList<String> y = new ListDoubleLinkedList<String>();
+        //int s = x.count();
+        while(!x.isEmpty())
+        {
+            if(n.contains(x.getStart()))
+            {
+                int num = Integer.valueOf(x.removeAtStart());
+                y.insert(String.valueOf(num));
+            }
+            else
+            {
+                int a = Integer.valueOf(y.removeAtStart());
+                int b = Integer.valueOf(y.removeAtStart());
+                if (x.getStart().equals("+"))
+                {
+                    int c = suma(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("-"))
+                {
+                    int c = resta(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("*"))
+                {
+                    int c = multiplicacion(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("/"))
+                {
+                    int c = division(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+            }
+        }
+        return Integer.valueOf(y.getStart());
 	}
 
 
 	@Override
-	public int operarLinkedList(ListLinkedList<String> t) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int operarLinkedList(ListLinkedList<String> x) {
+		String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
+        ListDoubleLinkedList<String> y = new ListDoubleLinkedList<String>();
+        //int s = x.count();
+        while(!x.isEmpty())
+        {
+            if(n.contains(x.getStart()))
+            {
+                int num = Integer.valueOf(x.removeAtStart());
+                y.insert(String.valueOf(num));
+            }
+            else
+            {
+                int a = Integer.valueOf(y.removeAtStart());
+                int b = Integer.valueOf(y.removeAtStart());
+                if (x.getStart().equals("+"))
+                {
+                    int c = suma(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("-"))
+                {
+                    int c = resta(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("*"))
+                {
+                    int c = multiplicacion(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+                else if ((x.getStart()).equals("/"))
+                {
+                    int c = division(b, a);
+                    y.insert(String.valueOf(c));
+                    x.removeAtStart();
+                }
+            }
+        }
+        return Integer.valueOf(y.getStart());
 	}
 
 

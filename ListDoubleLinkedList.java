@@ -19,6 +19,8 @@ public class ListDoubleLinkedList<E> extends List<E> {
 		size = 0;
 	}
 	
+	
+	
 	@Override
 	public boolean insert(E element) {
 		NodeDouble<E> newNode = new NodeDouble<E>(element);
@@ -107,6 +109,14 @@ public class ListDoubleLinkedList<E> extends List<E> {
 	@Override
 	public boolean isEmpty() {
 		return (size == 0);
+	}
+	
+	public E getEnd() {
+		return _end.NValue();
+	}
+	
+	public E getStart() {
+		return _start.NValue();
 	}
 
 }
