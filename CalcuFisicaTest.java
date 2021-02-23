@@ -1,4 +1,4 @@
-/*package algoritmos;
+package algoritmos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,4 +36,4 @@ class CalcuFisicaTest {
 	
 	
 
-}*/
+}

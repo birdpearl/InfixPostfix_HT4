@@ -14,7 +14,7 @@
 
 //import java.util.ArrayList;
 
-import java.util.*;
+//import java.util.*;
 
 public class vista{
     
@@ -68,7 +68,7 @@ public class vista{
      * @return n/a
      **/
     public void noValid(){
-        System.out.println("Por favor ingrese un numero valido, si usted ingresa una letra EL PROGRAMA SE CIERRA");
+        System.out.println("Por favor ingrese un numero valido.\n");
     }
 
     /**
@@ -97,10 +97,14 @@ public class vista{
      * @author Diego Perdomo y Ana Ramirez
      * @return n/a
      **/
-    public void respuesta(String tipo, int resp){
-        System.out.println("A trav�s de "+tipo+" se obtuvo "+String.valueOf(resp)+" como respuesta.");
+    public void respuesta(String tipo, int resp, String postfix){
+        System.out.println("A través de "+tipo+" se obtuvo "+String.valueOf(resp)+" como respuesta de la expresión " +postfix);
     }
 
+    /**
+     * @author Diego Perdomo y Ana Ramírez
+     * @return n/a
+     */
     public void ingresarPath()
     {
         System.out.println("\nIngrese el path del archivo que busca abrir.");

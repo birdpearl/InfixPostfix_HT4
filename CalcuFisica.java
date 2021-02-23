@@ -65,58 +65,13 @@ public class CalcuFisica implements Calcu {
    
 
 
-    /*
+	
+    /** 
+     * operar con listas doblemente encadenadas
      * @param x
      * @return int
-     
+     */
     @Override
-    public int operar(pila x) {
-        String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
-        pila y = new pila();
-        int s = x.size();
-        while (!x.empty())
-        {
-            if(n.contains(x.peek().toString()))
-            {
-                int num = Integer.parseInt(x.pop().toString());
-                y.push(num);
-            }
-            else
-            {
-                int a = Integer.parseInt(y.pop().toString());
-                int b = Integer.parseInt(y.pop().toString());
-                if ((x.peek().toString()).equals("+"))
-                {
-                    int c = suma(b, a);
-                    y.push(c);
-                    x.pop();
-                }
-                else if ((x.peek().toString()).equals("-"))
-                {
-                    int c = resta(b, a);
-                    y.push(c);
-                    x.pop();
-                }
-                else if ((x.peek().toString()).equals("*"))
-                {
-                    int c = multiplicacion(b, a);
-                    y.push(c);
-                    x.pop();
-                }
-                else if ((x.peek().toString()).equals("/"))
-                {
-                    int c = division(b, a);
-                    y.push(c);
-                    x.pop();
-                }
-            }
-        }
-        return Integer.parseInt(y.peek().toString());
-    }*/
-
-
-	@Override
 	public int operarDoubleList(ListDoubleLinkedList<String> x) {
 		String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
@@ -131,8 +86,8 @@ public class CalcuFisica implements Calcu {
             }
             else
             {
-                int a = Integer.valueOf(y.removeAtStart());
-                int b = Integer.valueOf(y.removeAtStart());
+                int a = Integer.valueOf(y.removeAtEnd());
+                int b = Integer.valueOf(y.removeAtEnd());
                 if (x.getStart().equals("+"))
                 {
                     int c = suma(b, a);
@@ -163,7 +118,13 @@ public class CalcuFisica implements Calcu {
 	}
 
 
-	@Override
+	
+    /** 
+     * operar con listas encadenadas
+     * @param x
+     * @return int
+     */
+    @Override
 	public int operarLinkedList(ListLinkedList<String> x) {
 		String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
@@ -178,8 +139,8 @@ public class CalcuFisica implements Calcu {
             }
             else
             {
-                int a = Integer.valueOf(y.removeAtStart());
-                int b = Integer.valueOf(y.removeAtStart());
+                int a = Integer.valueOf(y.removeAtEnd());
+                int b = Integer.valueOf(y.removeAtEnd());
                 if (x.getStart().equals("+"))
                 {
                     int c = suma(b, a);
@@ -210,13 +171,18 @@ public class CalcuFisica implements Calcu {
 	}
 
 
+    
+    /** 
+     * operar con un stack que usa listas
+     * @param t
+     * @return int
+     */
     @Override
     public int operarArrayList(StackList<String> t) 
     {
         String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         ArrayList<String> n = new ArrayList<>(Arrays.asList(nums));
         StackList<String> y = new StackList<>();
-        int s = t.count();
         while(!t.isEmpty())
         {
             if(n.contains(t.peek()))
@@ -256,6 +222,12 @@ public class CalcuFisica implements Calcu {
         return Integer.parseInt(y.peek().toString());
     }
 
+    
+    /** 
+     * operar con un stack que usa vectores
+     * @param t
+     * @return int
+     */
     @Override
     public int operarVector(StackVector<String> t) {
         String[] nums = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};

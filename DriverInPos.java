@@ -11,13 +11,11 @@
 * Fecha de creacion: 18/02/2021
 * Ultima edicion: 23/02/2021
 ********************************************************/
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
-import java.io.File;
 
 public class DriverInPos {
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         
         //Se declaran instancias y declaran variables
     	ListDoubleLinkedList<String> d =new ListDoubleLinkedList<String>();
@@ -33,79 +31,171 @@ public class DriverInPos {
         boolean bandc=true;
         int opcion=0;
         
-        //aqui deber�as poner al usuario a que ingrese el path del archivo y registrarlo y todo se guarda en el vector postfix
-        //le puse 10 solo por ejemplo
 
-        /*boolean flag = false;
+        boolean flag = false;
+        String path = "";
         while(flag == false)
         {
             v.ingresarPath();
-            String path = scan.nextLine();
+            path = scan.nextLine();
+            //path = "C:\\Users\\DIEGO\\Documents\\UVG 2021\\semestre 1\\algoritmos\\hoja de trabajo 4\\datos.txt";
             flag = v.fileCreated(e, path);
-        }*/
-
-
-        postfix=e.Convertir(e.OpenFile("C:\\Users\\DIEGO\\Documents\\UVG 2021\\semestre 1\\algoritmos\\hoja de trabajo 4\\datos.txt"));
-
-        for(int i = 0; i < postfix.length; i++)
-        {
-            for(int j = 0; j < postfix[i].length(); j++)
-            {
-                sl.push(String.valueOf(postfix[i].charAt(postfix[i].length() - (j + 1))));
-            }
-            System.out.println(c.operarArrayList(sl));
         }
+        
+        postfix=e.Convertir(e.OpenFile(path));
 
-        System.out.println("");
-
-        for(int i = 0; i < postfix.length; i++)
-        {
-            StackVector<String> sv = new StackVector<>(postfix[i].length());
-            for(int j = 0; j < postfix[i].length(); j++)
+        int expresion = 0;
+        String temp = "";
+        while (opcion != 5 && bandc==true) //loop que genera el men� para el usuario
+        {                
+            if(expresion < postfix.length)
             {
-                sv.push(String.valueOf(postfix[i].charAt(postfix[i].length() - (j + 1))));
+                int op2 = 0;
+                boolean bandera = true;
+                while(bandera)
+                {
+                    v.bienve();
+                    String op = scan.nextLine();
+                    if(option(op, 0, 5))
+                    {
+                        op2 = Integer.parseInt(op);
+                        bandera = false;
+                    }
+                    else
+                    {
+                        v.noValid();
+                    }
+                }
+                opcion = op2;
+                temp = postfix[expresion];
+                
+                if (opcion == 1 )
+                {
+                    StackVector<String> sv = new StackVector<>(temp.length());
+                    for(int j = 0; j < temp.length(); j++)
+                    {
+                        sv.push(String.valueOf(temp.charAt(temp.length() - (j + 1))));
+                    }
+                    v.respuesta("Stack Vector", c.operarVector(sv), temp);
+                
+                } else if (opcion == 2)
+                {
+                    //se llama a Stack Arraylist
+                    for(int j = 0; j < temp.length(); j++)
+                    {
+                        sl.push(String.valueOf(temp.charAt(temp.length() - (j + 1))));
+                    }
+                	v.respuesta("Stack Arraylist", c.operarArrayList(sl), temp);
+                
+                } else if (opcion == 3)
+                {//se llama a Linked List
+                    for(int j = 0; j < temp.length(); j++)
+                    {
+                        l.insert(String.valueOf(temp.charAt(j)));
+                    }
+                	v.respuesta("Linked List", c.operarLinkedList(l), temp);
+                
+                }else if (opcion == 4)
+                {//se llama a Double Linked list
+                    for(int j = 0; j < temp.length(); j++)
+                    {
+                        d.insert(String.valueOf(temp.charAt(j)));
+                    }
+                	v.respuesta("Double Linked list", c.operarDoubleList(d), temp);
+                
+                } 
+                else if (opcion == 5)
+                {
+                    expresion = postfix.length;
+                    v.opSalir();//se cierra el programa
+                }
+                expresion++;
             }
-            System.out.println(c.operarVector(sv));
-        }
-
-
-
-        /*while (opcion != 5 && bandc==true) {//loop que genera el men� para el usuario
-            try{
-                v.bienve();
-                opcion = scan.nextInt(); //se copia la respuesta del ususario en una variable
-
-            }catch(Exception e){
-                //System.out.println("Por favor ingrese un numero validop");
+            else
+            {
                 bandc=false;
             }
-        
-            for(int i=0; i<postfix.length;i++) { //for para meterle los valores a las respectivas listas que iran dentro e cada operar
-            	d.insert(postfix[i]);
-            	l.insert(postfix[i]);
-      
+
+        }
+        scan.close();
+    }
+
+
+
+    
+    /** 
+     * Método para checar si un string es numérico
+     * @param s
+     * @return boolean
+     */
+    public static boolean check(String s)//
+    {
+        boolean numeric = true;
+        try 
+        {
+            int n = Integer.parseInt(s);
+        } 
+        catch (NumberFormatException e) 
+        {
+            numeric = false;
+        }
+
+        if(numeric)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    
+    /** 
+     * método para checar si un entero se encuentra en un rango
+     * @param min
+     * @param max
+     * @param x
+     * @return boolean
+     */
+    public static boolean rango(int min, int max, int x)//
+    {
+        if (x > min && x <= max)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    
+    
+    /** 
+     * Método que une los dos métodos anteriores para checar que el ingreso del usuario esté en un rango estipulado numérico
+     * @param e
+     * @param i
+     * @param j
+     * @return boolean
+     */
+    public static boolean option(String e, int i, int j)
+    {
+        if (check(e))
+        {
+            int n = Integer.parseInt(e);
+            if(rango(i, j, n))
+            {
+                return true;
             }
-            
-            if (opcion == 1 ){//se llama a stack vector
-                
-                //v.respuesta("Stack Vector", c.operarVector(postfix));
-
-            } else if (opcion == 2){//se llama a Stack Arraylist
-            	 //v.respuesta("Stack Arraylist", c.operarArrayList(postfix));
-
-            } else if (opcion == 3){//se llama a Linked List
-            	 v.respuesta("Linked List", c.operarLinkedList(l));
-
-            }else if (opcion == 4){//se llama a Double Linked list
-            	 v.respuesta("Double Linked list", c.operarDoubleList(d));
-
-            } else if (opcion == 5){
-                v.opSalir();//se cierra el programa
+            else
+            {
+                return false;
             }
-            else{
-                v.noValid();//el programa se cierra si se ingres� una letra
-            }
-        }*/
-
+        }
+        else
+        {
+            return false; 
+        }
     }
 }
