@@ -1,7 +1,6 @@
 /**
  * 
  */
-package algoritmos;
 
 /**
  * @author moise

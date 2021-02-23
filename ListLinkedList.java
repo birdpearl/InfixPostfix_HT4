@@ -1,4 +1,3 @@
-package algoritmos;
 
 import java.util.LinkedList;
 

@@ -1,7 +1,6 @@
 /**
  * 
  */
-package algoritmos;
 
 /*******************************************************
 * Universidad del Valle de Guatemala
@@ -49,7 +48,7 @@ public class vista{
      * @return n/a
      **/
     public void opSalir(){
-        System.out.println("Gracias por utilizar este programa.¡Hasta pronto!");
+        System.out.println("Gracias por utilizar este programa.ï¿½Hasta pronto!");
     }
    
     
@@ -89,6 +88,6 @@ public class vista{
      * @return n/a
      **/
     public void respuesta(String tipo, int resp){
-        System.out.println("A través de "+tipo+" se obtuvo "+String.valueOf(resp)+" como respuesta.");
+        System.out.println("A travï¿½s de "+tipo+" se obtuvo "+String.valueOf(resp)+" como respuesta.");
     }
 }
