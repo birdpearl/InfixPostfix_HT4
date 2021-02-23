@@ -77,8 +77,18 @@ public class vista{
      * @author Diego Perdomo y Ana Ramirez
      * @return n/a
      **/
-    public void fileCreated(){
-        System.out.println("Su archivo ha sido creado y leido con exito");
+    public boolean fileCreated(Evaluador e, String s)
+    {
+        if(e.OpenFile(s) != null)
+        {
+            System.out.println("Su archivo ha sido leido con exito");
+            return true;
+        }
+        else
+        {
+            System.out.println("La dirección que ha ingresado no ha regresado un archivo legible, lo sentimos.");
+            return false;
+        }
     }
 
     /**
@@ -89,5 +99,10 @@ public class vista{
      **/
     public void respuesta(String tipo, int resp){
         System.out.println("A trav�s de "+tipo+" se obtuvo "+String.valueOf(resp)+" como respuesta.");
+    }
+
+    public void ingresarPath()
+    {
+        System.out.println("\nIngrese el path del archivo que busca abrir.");
     }
 }
